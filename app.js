@@ -38,7 +38,7 @@ app.get('/pets-search',(req,res)=>{
     res.sendFile(__dirname+'/pages/pets_search.html')
 })
 
-app.get('/register',(req,res)=>{
+app.get('register',(req,res)=>{
 res.sendFile(__dirname+'/pages/register.html')
 })
 
