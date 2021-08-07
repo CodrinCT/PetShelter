@@ -4,7 +4,7 @@ const connectionDB = require('./DBconection/connection')
 const user = require('./models/user')
 const bodyParser = require('body-parser');
 const pet = require('./models/pet')
-const port = 5000;
+const port = process.env.PORT;
 connectionDB();
 let newUser = new user({
     userName:'Codrin',
@@ -61,43 +61,6 @@ app.post('/pets-search/:pet', async(req,res)=>{
      })
      res.send(petsArr);
      }
-     
-
-//     const petParam = req.params.pet.toString();
-//     console.log(petParam);
-//     const petsByName = await pet.find({petName:petParam});
-//     const petsByCategory = await pet.find({petCategory:petParam});
-//     const petsByAge = await pet.find({petAge:petParam});
-//     const petsByWeight = await pet.find({petWeight:petParam});
-//     const petsByHealth = await pet.find({petHealth:petParam});
-//     const petsByFeatures = await pet.find({petDinstinctiveFeatures:petParam});
-
-// //    console.log(pets);
-//     if(petsByName){
-//         petsArr.push(petsByName);
-//     } 
-//     if(petsByCategory){
-//     petsArr.push(petsByCategory)
-//     }
-//     if(petsByAge){
-//         petsArr.push(petsByAge)
-//     }
-//     if(petsByWeight){
-//         petsArr.push(petsByWeight)
-//     }
-//     if(petsByHealth){
-//         petsArr.push(petsByHealth)
-//     }
-//     if(petsByFeatures){
-//     petsArr.push(petsByFeatures)
-//     }
-//     if(petsArr.length > 0){
-//     res.send(petsArr)
-//     }
-    
-    // else{
-    //     res.status(500).json();
-    // }
 })
 
 app.listen(port,()=>{
