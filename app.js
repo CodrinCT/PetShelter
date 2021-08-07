@@ -34,7 +34,7 @@ app.post('/login', async (req,res)=>{
     }
 })
 
-app.get('/pets-search',(req,res)=>{
+app.get(__dirname+'/pets-search',(req,res)=>{
     res.sendFile(__dirname+'/pages/pets_search.html')
 })
 
