@@ -1,0 +1,174 @@
+body {
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+#login_form {
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(83, 74, 107);
+  height: 100vh;
+  /* border-radius: 10px; */
+  align-items: center;
+  width: fit-content;
+  justify-content: center;
+  margin-right: 45px;
+  padding-left: 25px;
+  padding-right: 25px;
+}
+h2 {
+  margin-top: 0;
+  /* margin-bottom: 30px; */
+  position: absolute;
+  top: 20%;
+  font-size: 45px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+#email_div {
+  /* margin-top: 15px; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 30px;
+}
+
+#password_div {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  align-items: center;
+  font-size: 30px;
+}
+
+#log_btn {
+  margin-top: 25px;
+  background-color: rgb(47, 211, 25);
+  width: 50%;
+  align-self: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 20px;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-weight: 800;
+  border-radius: 8px;
+  border-width: 3px;
+  border-color: rgb(43, 184, 24);
+}
+
+#page_div {
+  height: 100vh;
+  background-image: url("../img/jamie-street-0nk6XZp7_1E-unsplash.jpg");
+  background-position: top;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-direction: row;
+}
+#list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: auto;
+  text-decoration: none;
+  list-style: none;
+  font-size: 22px;
+  font-weight: bold;
+  align-items: center;
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
+#nav_bar {
+  justify-self: flex-start;
+  position: absolute;
+  top: 0px;
+  left: 0;
+  right: 0;
+  background-color: rgba(189, 133, 28, 0.576);
+}
+#option_log {
+  width: 25%;
+  position: absolute;
+  top: 72%;
+  list-style: none;
+  text-decoration: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  padding-left: 0;
+}
+
+#option_log li i {
+  text-decoration: none;
+  color: black;
+  font-size: 35px;
+}
+
+#password {
+  font-size: 20px;
+  margin-top: 5px;
+}
+#email {
+  font-size: 20px;
+  margin-top: 5px;
+}
+
+#icon {
+  font-size: 70px;
+}
+
+#register_link {
+  cursor: pointer;
+}
+#register_link:hover {
+  color: rgb(240, 145, 21);
+  font-size: 25px;
+  text-decoration-line: underline;
+  text-underline-offset: 3px;
+  transition-duration: 0.4s;
+}
+
+#about_link {
+  cursor: pointer;
+}
+
+#about_link:hover {
+  color: rgb(240, 145, 21);
+  font-size: 25px;
+  text-decoration-line: underline;
+  text-underline-offset: 3px;
+  transition-duration: 0.4s;
+}
+
+#contact_link {
+  cursor: pointer;
+}
+
+#contact_link:hover {
+  color: rgb(240, 145, 21);
+  font-size: 25px;
+  text-decoration-line: underline;
+  text-underline-offset: 3px;
+  transition-duration: 0.4s;
+}
+#help_link {
+  cursor: pointer;
+}
+
+#help_link:hover {
+  color: rgb(240, 145, 21);
+  font-size: 25px;
+  text-decoration-line: underline;
+  text-underline-offset: 3px;
+  transition-duration: 0.4s;
+}
+
+#errorMsg {
+  background-color: rgb(216, 21, 21);
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 20px;
+  font-weight: bold;
+}

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <link rel="stylesheet" href="./style/index.css" />
+    <link
+      rel="stylesheet"
+      href="./fontawesome-free-5.15.3-web/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div id="page_div">
+      <div id="nav_bar">
+        <ul id="list">
+          <li id="help_link">Help</li>
+          <li id="contact_link">Contact</li>
+          <li><i class="fas fa-paw" id="icon"></i></li>
+          <li id="about_link">About Us</li>
+          <li id="register_link">
+            <a href="/register" style="text-decoration: none; color: unset"
+              >Register</a
+            >
+          </li>
+        </ul>
+      </div>
+      <form action="/login" method="POST" id="login_form">
+        <h2>Login</h2>
+        <div id="email_div">
+          <label for="email">Email</label>
+          <input type="email" name="email" id="email" />
+        </div>
+        <div id="password_div">
+          <label for="password">Password</label>
+          <input type="password" name="password" id="password" />
+        </div>
+        <button type="submit" id="log_btn">Login</button>
+        <ul id="option_log">
+          <li><i class="fab fa-google"></i></li>
+          <li><i class="fab fa-facebook-square"></i></li>
+        </ul>
+      </form>
+    </div>
+    <script>
+      const form = document.getElementById("login_form");
+      form.addEventListener("submit", loginUser);
+
+      async function loginUser(event) {
+        try {
+          event.preventDefault();
+          const email = document.getElementById("email").value;
+          const password = document.getElementById("password").value;
+          const result = await fetch("/login", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              email,
+              password,
+            }),
+          });
+          const json = await result;
+          if (json.status == 200) {
+            window.location.assign(json.url);
+            console.log(json);
+          } else {
+            throw (new Error().message = "The password is incorrect!");
+          }
+        } catch (e) {
+          const errorMsg = document.createElement("p");
+          errorMsg.id = "errorMsg";
+          errorMsg.innerHTML = "The password is incorrect!";
+          form.appendChild(errorMsg);
+        }
+      }
+
+      // const register = document.getElementById("register_link");
+      // register.addEventListener("click", () => {
+      //   help;
+      // });
+    </script>
+  </body>
+</html>

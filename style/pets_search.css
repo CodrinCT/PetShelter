@@ -1,0 +1,165 @@
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  /* justify-content: center; */
+  background-image: url("/img/karina-vorozheeva-rW-I87aPY5Y-unsplash.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+#form_div {
+  display: flex;
+  justify-self: center;
+  align-self: center;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+#search_title {
+  align-self: center;
+  font-size: 50px;
+  color: rgb(243, 30, 51);
+  background-color: rgba(0, 0, 0, 0.59);
+  padding: 8px;
+}
+
+#list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: auto;
+  text-decoration: none;
+  list-style: none;
+  font-size: 22px;
+  font-weight: bold;
+  align-items: center;
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
+#nav_bar {
+  justify-self: flex-start;
+  /* position: absolute;
+  top: 0px;
+  left: 0;
+  right: 0; */
+  background-color: rgba(189, 133, 28, 0.576);
+}
+
+#icon {
+  font-size: 70px;
+}
+
+#register_link {
+  cursor: pointer;
+}
+#register_link:hover {
+  color: rgb(240, 145, 21);
+  font-size: 25px;
+  text-decoration-line: underline;
+  text-underline-offset: 3px;
+  transition-duration: 0.4s;
+}
+
+#about_link {
+  cursor: pointer;
+}
+
+#about_link:hover {
+  color: rgb(240, 145, 21);
+  font-size: 25px;
+  text-decoration-line: underline;
+  text-underline-offset: 3px;
+  transition-duration: 0.4s;
+}
+
+#contact_link {
+  cursor: pointer;
+}
+
+#contact_link:hover {
+  color: rgb(240, 145, 21);
+  font-size: 25px;
+  text-decoration-line: underline;
+  text-underline-offset: 3px;
+  transition-duration: 0.4s;
+}
+#help_link {
+  cursor: pointer;
+}
+
+#help_link:hover {
+  color: rgb(240, 145, 21);
+  font-size: 25px;
+  text-decoration-line: underline;
+  text-underline-offset: 3px;
+  transition-duration: 0.4s;
+}
+
+#search_form {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#search_btn {
+  font-size: 40px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  background-color: chartreuse;
+  border-radius: 8px;
+  padding: 5px;
+  box-shadow: chartreuse 3px 2px;
+}
+#search {
+  font-size: 40px;
+  border-radius: 8px;
+  border-width: 5px;
+}
+
+#search_result_div {
+  display: flex;
+  /* background-color: grey; */
+  justify-content: space-evenly;
+  margin-top: 15px;
+  flex-wrap: wrap;
+}
+
+.petPhoto {
+  height: 190px;
+  width: 140px;
+}
+
+.petPhoto:hover {
+  transition-duration: 1s;
+  transform: scale(1.2);
+}
+
+.petProfile {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: antiquewhite;
+  border-radius: 8px;
+  border-color: black;
+  border-width: 3px;
+  padding: 5px;
+  width: 350px;
+  justify-content: space-evenly;
+  margin-top: 15px;
+}
+
+.photoDiv {
+  height: 190px;
+  width: 140px;
+  margin-right: 10px;
+  padding: 5px 5px 0 5px;
+  overflow: hidden;
+}
+
+.infoDiv {
+  width: 180px;
+}
