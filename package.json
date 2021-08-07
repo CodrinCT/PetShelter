@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon app.js"
+    "web start": "nodemon app.js"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
