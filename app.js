@@ -34,11 +34,11 @@ app.post('/login', async (req,res)=>{
     }
 })
 
-app.get(__dirname+'/pets-search',(req,res)=>{
+app.get('/pets-search',(req,res)=>{
     res.sendFile(__dirname+'/pages/pets_search.html')
 })
 
-app.get('/register',(req,res)=>{
+app.get(__dirname+'/register',(req,res)=>{
 res.sendFile(__dirname+'/pages/register.html')
 })
 
