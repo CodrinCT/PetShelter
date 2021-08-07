@@ -4,7 +4,7 @@ const connectionDB = require('./DBconection/connection')
 const user = require('./models/user')
 const bodyParser = require('body-parser');
 const pet = require('./models/pet')
-const port = process.env.PORT;
+const port = process.env.PORT || 3000;
 connectionDB();
 let newUser = new user({
     userName:'Codrin',
