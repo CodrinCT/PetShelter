@@ -42,7 +42,7 @@ app.get('/register',(req,res)=>{
 res.sendFile(__dirname+'/pages/register.html')
 })
 
-app.post('/register',(req,res)=>{
+app.post(__dirname + '/register',(req,res)=>{
 user.create(newUser);
 res.send('user created')
 })
