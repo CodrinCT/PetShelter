@@ -43,44 +43,6 @@
         </ul>
       </form>
     </div>
-    <script>
-      const form = document.getElementById("login_form");
-      form.addEventListener("submit", loginUser);
-
-      async function loginUser(event) {
-        try {
-          event.preventDefault();
-          const email = document.getElementById("email").value;
-          const password = document.getElementById("password").value;
-          const result = await fetch("/login", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              email,
-              password,
-            }),
-          });
-          const json = await result;
-          if (json.status == 200) {
-            window.location.assign(json.url);
-            console.log(json);
-          } else {
-            throw (new Error().message = "The password is incorrect!");
-          }
-        } catch (e) {
-          const errorMsg = document.createElement("p");
-          errorMsg.id = "errorMsg";
-          errorMsg.innerHTML = "The password is incorrect!";
-          form.appendChild(errorMsg);
-        }
-      }
-
-      // const register = document.getElementById("register_link");
-      // register.addEventListener("click", () => {
-      //   help;
-      // });
-    </script>
+    <script src="./front-end-script/index.js"></script>
   </body>
 </html>

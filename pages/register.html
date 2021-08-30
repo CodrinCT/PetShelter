@@ -4,17 +4,44 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <link rel="stylesheet" href="../style/register.css" />
+    <link
+      rel="stylesheet"
+      href="../fontawesome-free-5.15.3-web/css/all.min.css"
+    />
+    <title>Register</title>
   </head>
   <body>
-    <form action="/register" method="POST">
-      <label for="userName">Name</label>
-      <input type="text" id="userName" name="name" />
-      <label for="email">Email</label>
-      <input type="email" id="email" name="email" />
-      <label for="password">Password</label>
-      <input type="password" id="password" name="password" />
-      <button type="submit">Button</button>
+    <div id="nav_bar">
+      <ul id="list">
+        <li id="help_link">Help</li>
+        <li id="contact_link">Contact</li>
+        <li><i class="fas fa-paw" id="icon"></i></li>
+        <li id="about_link">About Us</li>
+        <li id="register_link">
+          <a href="/register" style="text-decoration: none; color: unset"
+            >Register</a
+          >
+        </li>
+      </ul>
+    </div>
+    <form action="/register" method="POST" id="reg_form">
+      <div id="name_div" class="inside_form_div">
+        <label for="userName">Name</label>
+        <input type="text" id="userName" name="userName" />
+      </div>
+      <div id="email_div" class="inside_form_div">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" />
+      </div>
+      <div id="password_div" class="inside_form_div">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" />
+      </div>
+      <button type="submit" id="reg_btn">
+        Register<i class="fas fa-paw" id="btn_icon"></i>
+      </button>
     </form>
+    <script src="../front-end-script/register.js"></script>
   </body>
 </html>

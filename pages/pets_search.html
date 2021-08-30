@@ -17,15 +17,82 @@
       <ul id="list">
         <li id="help_link">Help</li>
         <li id="contact_link">Contact</li>
-        <li><i class="fas fa-paw" id="icon"></i></li>
+        <li>
+          <a href="/"><i class="fas fa-paw" id="icon"></i></a>
+        </li>
         <li id="about_link">About Us</li>
-        <li id="register_link">Register</li>
+        <li id="logout_link"><a href="/logout">Logout</a></li>
       </ul>
     </div>
     <div id="form_div">
       <form action="" method="post" id="search_form">
+        <div>
+          <label for="category">Category</label>
+          <input
+            type="text"
+            id="category"
+            name="category"
+            placeholder="ex: Dog"
+          />
+        </div>
+        <div>
+          <label for="age">Age</label>
+          <input type="text" id="age" name="age" placeholder="ex: 2" />
+        </div>
+        <div>
+          <label for="weight">Weight</label>
+          <input type="text" id="weight" name="weight" placeholder="ex: 12" />
+        </div>
+        <div>
+          <label for="health">Health</label>
+          <input
+            type="text"
+            id="health"
+            name="health"
+            placeholder="ex: blind, healthy"
+          />
+        </div>
+
+        <!-- <select name="dropdown" id="">
+          <option value="">Category</option>
+          <option value="">hello</option>
+          <option value="">hello</option>
+          <option value="">hello</option>
+        </select> -->
+        <!-- <div id="category_div">
+          <h3>Category</h3>
+          <ul id="search_category">
+            <li>Dog</li>
+            <li>Cat</li>
+            <li>Bird</li>
+            <li>Reptile</li>
+            <li>Rodent</li>
+          </ul>
+        </div>
+
+        <div>
+          <h3>Age</h3>
+          <ul id="search_age">
+            <li>0-1</li>
+            <li>2-3</li>
+            <li>4-5</li>
+            <li>6-7</li>
+            <li>7+</li>
+          </ul>
+        </div>
+
+        <div>
+          <h3>Weight</h3>
+          <ul id="search_weight">
+            <li>0-1 Kg</li>
+            <li>1-5 Kg</li>
+            <li>6-10 Kg</li>
+            <li>11-15 Kg</li>
+            <li>16-20 Kg</li>
+            <li>21+ Kg</li>
+          </ul>
+        </div> -->
         <button type="submit" id="search_btn">Search</button>
-        <input type="text" id="search" placeholder="new family member" />
       </form>
     </div>
     <div id="search_result_div"></div>

@@ -1,18 +1,29 @@
-      const form = document.getElementById('search_form') 
+      const form = document.getElementById('search_form')
+      const category_div = document.getElementById('category_div')
        form.addEventListener("submit", async (event) => {
+        event.preventDefault();
        let profileId = 0;
         //prevent the form to change the page by going to it's action attribute
-        event.preventDefault();
 
         //the fetch method
-        const input = document.getElementById("search").value;
+        const petCategory = document.getElementById("category").value;
+        const petAge = document.getElementById("age").value;
+        const petWeight = document.getElementById("weight").value;
+        const petHealth = document.getElementById("health").value;
+
         const result_div = document.getElementById("search_result_div");
         result_div.querySelectorAll("*").forEach((n) => n.remove());
-        const result = await fetch(`/pets-search/${input}`, {
+        const result = await fetch('/pets-search', {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
+          body: JSON.stringify({
+            petCategory,
+            petAge,
+            petWeight,
+            petHealth
+          })
         })
           .then((res) => {
             return res.json();
@@ -49,6 +60,7 @@
               petHealth.innerHTML = `<strong>Health:</strong> ${element.petHealth}`;
               petDinstinctiveFeatures.innerHTML = `<strong>Distinctive Features:</strong> ${element.petDistinctiveFeatures}`;
               petPhoto.src = element.petPhoto;
+              petPhoto.alt = 'pet image'
 
               // assign classes
               petCategory.className = "petCategory";
@@ -72,6 +84,11 @@
               //     petHealth,
               //     petDinstinctiveFeatures,
 
+              //add event listener to the pet photo
+          petPhoto.addEventListener('click', async()=>{
+            const petId = element._id;
+           window.location.href=`"/pets-search/petprofile?petId="${petId}`;
+        })
               // append the elements
               infoDiv.appendChild(petCategory);
               infoDiv.appendChild(petName);
@@ -91,23 +108,10 @@
           });
       });
 
-
-      const petPhoto = document.getElementsByClassName('photoDiv')
-      petPhoto.forEach(photo=>{
-        photo.addEventListener('click', async()=>{
-          const photoId = photo.id;
-          const result = await fetch(`/pet-search/petprofile`,{
-            method:"POST",
-            headers: {
-             "Content-Type" : "application/json",
-            },
-            body: JSON.stringify({
-              photoId
-            }),
-          }).then(res=>{
-            res.json()
-          }).then((data)=>{
-            console.log(data);
-          });
-        })
-      })
+      // category_div.addEventListener('click',()=>{
+      //  const children =  category_div.children
+      // //  children.forEach((child)=>{
+      // //    child.hidden = false;
+      // //  })
+      //  console.log(children);
+      // })
