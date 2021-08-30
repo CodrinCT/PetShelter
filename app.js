@@ -43,7 +43,7 @@ app.use(express.json())
 app.use(express.static(__dirname, +'/css'));
 
 app.use((req,res,next)=>{
-    if(req.url !=='/login' && req.url !=='/' && req.url !=='/logout'){
+    if(req.url !=='/login' && req.url !=='/' &&req.url !=='/register' && req.url !=='/logout'){
         const {userId} = req.session
     if(userId){
         if(req.session.userId === userId){
