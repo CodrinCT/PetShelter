@@ -34,6 +34,8 @@ app.use(session({
         mongoUrl:'mongodb+srv://codrin:codrin123@first.bgqmf.mongodb.net/NodeJsDB?retryWrites=true&w=majority'
     })
 }))
+
+app.set('trust proxy',1)
 app.use(express.urlencoded({
     extended:true
 }))
