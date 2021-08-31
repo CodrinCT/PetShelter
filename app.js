@@ -133,11 +133,11 @@ app.post('/register', async (req,res)=>{
 
     let mailOptions={
         form:'"Codrin" <tapusacodrin@gmail.com>',
-        to: email,
+        to: email.toString(),
         subject:'Verify your account',
         text: "Hello world",
         html:`<h1>Hello, please click the link bellow to verify your account</h1>
-        <span>Link: </span><a href="https://pet-shelter-webapp.herokuapp.com/verify/${createdUser.id}/${createdUser.secretToken}">http//localhost:5000/verify/${createdUser.id}/${createdUser.secretToken}</a>`,
+        <span>Link: </span><a href="${process.env.DOMAIN}/verify/${createdUser.id}/${createdUser.secretToken}">${process.env.DOMAIN}/verify/${createdUser.id}/${createdUser.secretToken}</a>`,
     };
 
     transporter.sendMail(mailOptions, (error, info)=>{
