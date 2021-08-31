@@ -4,12 +4,11 @@ const MongoStore = require('connect-mongo')
 const app = express();
 const connectionDB = require('./DBconection/connection')
 const user = require('./models/user')
-const bodyParser = require('body-parser');
 const pet = require('./models/pet')
 const nodemailer = require('nodemailer');
 const Joi = require('joi');
 const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
+const randomString = require('randomstring')
 const port = process.env.PORT || 5000;
 connectionDB();
 require('dotenv').config()
@@ -24,7 +23,7 @@ app.use(session({
     name: 'sid',
     cookie:{
         sameSite:true,
-        secure: true,
+        secure: false,
         maxAge: Number(process.env.TWO_HOURS)
     },
     resave:false,
@@ -43,13 +42,16 @@ app.use(express.json())
 app.use(express.static(__dirname, +'/css'));
 
 app.use((req,res,next)=>{
-    if(req.url !=='/login' && req.url !=='/' &&req.url !=='/register' && req.url !=='/logout'){
+    const splitUrl = req.url.toString().split('/');
+    console.log(splitUrl);
+    if(req.url !=='/login' && req.url !=='/' && req.url !=='/register' && req.url !=='/logout' && req.url !== '/verify/'+splitUrl[2]+'/'+splitUrl[3] && req.url !=='favicon.ico'){
         const {userId} = req.session
     if(userId){
-        if(req.session.userId === userId){
+        if(req.session.userId === userId){ 
            return next()
         }
         else{
+            console.log('userId is incorect');
            return res.redirect('/')
         }
     }else{
@@ -144,7 +146,7 @@ app.post('/register', async (req,res)=>{
         }
         console.log("Message sent: %s", info.messageId);
     })
-    res.send('user created')
+    res.status(200).redirect('/')
     }else if(validated.error){
         send(error)
     }

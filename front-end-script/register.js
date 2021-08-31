@@ -17,7 +17,7 @@ const password = document.getElementById('password').value;
             password
         })
     });
-    const action = await result;
+    const action = result;
     if (action.status == 200) {
         window.location.assign(action.url)
     }else if(action.status=500){
