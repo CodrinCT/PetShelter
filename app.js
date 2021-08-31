@@ -133,7 +133,7 @@ app.post('/register', async (req,res)=>{
 
     let mailOptions={
         form:'"Codrin" <tapusacodrin@gmail.com>',
-        to: email.toString(),
+        to: email,
         subject:'Verify your account',
         text: "Hello world",
         html:`<h1>Hello, please click the link bellow to verify your account</h1>
