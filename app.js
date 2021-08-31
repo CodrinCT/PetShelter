@@ -30,7 +30,7 @@ app.use(session({
     saveUninitialized:false,
     secret : process.env.ACCES_TOKEN_SECRET,
     store:MongoStore.create({
-        mongoUrl:'mongodb+srv://codrin:codrin123@first.bgqmf.mongodb.net/NodeJsDB?retryWrites=true&w=majority'
+        mongoUrl:process.env.MONGODB_URL
     })
 }))
 
@@ -48,19 +48,18 @@ app.use((req,res,next)=>{
         const {userId} = req.session
     if(userId){
         if(req.session.userId === userId){ 
-           return next()
+        return next()
         }
         else{
-            console.log('userId is incorect');
-           return res.redirect('/')
+        console.log('userId is incorect');
+        return res.redirect('/')
         }
     }else{
-       return res.redirect('/')
+    return res.redirect('/')
     }
     }
-  next()
+next()
 })
-
 
 app.get('/logout', (req,res)=>{
 req.session.destroy((err)=>{
@@ -68,8 +67,6 @@ req.session.destroy((err)=>{
 })
 res.clearCookie('sid').redirect('/');
 })
-
-
 
 app.get('/',(req,res)=>{
 res.sendFile(__dirname+'/index.html')

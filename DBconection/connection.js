@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
+require('dotenv').config()
 
-const URI = "mongodb+srv://codrin:codrin123@first.bgqmf.mongodb.net/NodeJsDB?retryWrites=true&w=majority";
+const URI = process.env.MONGODB_URL;
 
 const connectionDB = async()=>{
    await mongoose.connect(URI, {useUnifiedTopology:true,useNewUrlParser:true});
