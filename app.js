@@ -52,7 +52,8 @@ app.use(express.static(__dirname, +'/css'));
 app.use((req,res,next)=>{
     const splitUrl = req.url.toString().split('/');
     console.log(splitUrl);
-    if(req.url !=='/login' && req.url !=='/' && req.url !=='/register' && req.url !=='/logout' && req.url !== '/verify/'+splitUrl[2]+'/'+splitUrl[3] && req.url !=='favicon.ico'){
+    // Change the splitUrl array selection when you work locally
+    if(req.url !=='/login' && req.url !=='/' && req.url !=='/register' && req.url !=='/logout' && req.url !== '/verify/'+splitUrl[3]+'/'+splitUrl[4] && req.url !=='favicon.ico'){
         const {userId} = req.session
     if(userId){
         if(req.session.userId === userId){ 
