@@ -9,6 +9,14 @@ const nodemailer = require('nodemailer');
 const Joi = require('joi');
 const bcrypt = require('bcrypt');
 const randomString = require('randomstring')
+const {google} = require('googleapis')
+const OAuth2 = google.auth.OAuth2
+
+const OAuth2_client = new OAuth2(process.env.CLIENT_ID, process.env.CLIENT_SECRET)
+
+OAuth2_client.setCredentials({
+    refresh_token: process.env.REFRESH_TOKEN
+})
 const port = process.env.PORT || 5000;
 connectionDB();
 require('dotenv').config()
@@ -120,8 +128,12 @@ app.post('/register', async (req,res)=>{
  let transporter = nodemailer.createTransport({
         service:'Gmail',
         auth:{
+            type: 'OAuth2',
             user: process.env.GMAIL_USER,
-            pass: process.env.GMAIL_PASS
+            clientId: process.env.CLIENT_ID,
+            clientSecret: process.env.CLIENT_SECRET,
+            refreshToken: process.env.REFRESH_TOKEN,
+            accessToken:process.env.ACCES_TOKEN
         },
         // tls:{
         //     rejectUnauthorized:false
@@ -129,7 +141,7 @@ app.post('/register', async (req,res)=>{
     });
 
     let mailOptions={
-        form:'"Codrin" <tapusacodrin@gmail.com>',
+        form:`"Pet Shelter" <${process.env.GMAIL_USER}>`,
         to: email,
         subject:'Verify your account',
         text: "Hello world",
