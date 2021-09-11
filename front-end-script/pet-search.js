@@ -87,7 +87,7 @@
               //add event listener to the pet photo
           petPhoto.addEventListener('click', async()=>{
             const petId = element._id;
-           window.location.href=`"/pets-search/petprofile?petId="${petId}`;
+           window.location.href=`/petprofile/${petId}`;
         })
               // append the elements
               infoDiv.appendChild(petCategory);

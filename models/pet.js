@@ -6,7 +6,8 @@ const petSchema = new mongoose.Schema({
     petAge:{type:String},
     petWeight:{type:String},
     petHealth:{type:String},
-    petDinstinctiveFeatures:{type:String},
+    petDistinctiveFeatures:{type:String},
+    petPhoto:{type:String}
 },{
     collection:'pets'
 })

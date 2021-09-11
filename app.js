@@ -11,6 +11,8 @@ const bcrypt = require('bcrypt');
 const randomString = require('randomstring')
 const {google} = require('googleapis')
 const OAuth2 = google.auth.OAuth2
+const path = require('path');
+const adoptionForms = require('./models/adoption_form');
 
 const OAuth2_client = new OAuth2(process.env.CLIENT_ID, process.env.CLIENT_SECRET)
 
@@ -27,11 +29,14 @@ const joiSchema = Joi.object().keys({
     password:Joi.string().pattern(new RegExp('^[a-zA-Z0-9]{3,30}$')),
 })
 
+app.set('views', path.join(__dirname,'views'))
+app.set('view engine', 'ejs')
+
 app.use(session({
     name: 'sid',
     cookie:{
         sameSite:true,
-        secure: true,
+        secure: false,
         maxAge: Number(process.env.TWO_HOURS)
     },
     resave:false,
@@ -47,13 +52,12 @@ app.use(express.urlencoded({
     extended:true
 }))
 app.use(express.json())
-app.use(express.static(__dirname, +'/css'));
+app.use(express.static(__dirname, +'/style'));
 
 app.use((req,res,next)=>{
     const splitUrl = req.url.toString().split('/');
-    console.log(splitUrl);
     // Change the splitUrl array selection when you work locally
-    if(req.url !=='/login' && req.url !=='/' && req.url !=='/register' && req.url !=='/logout' && req.url !== '/verify/'+splitUrl[2]+'/'+splitUrl[3] && req.url !=='favicon.ico'){
+    if(req.url !=='/login' && req.url !=='/' && req.url !=='/register' && req.url !=='/logout' && req.url !== '/verify/'+splitUrl[2]+'/'+splitUrl[3] && req.url !=='favicon.ico' && req.url !== '/petprofile/:petId'){
         const {userId} = req.session
     if(userId){
         if(req.session.userId === userId){ 
@@ -210,10 +214,32 @@ app.post('/pets-search', async(req,res)=>{
     }
 })
 
-app.get('/pets-search/petprofile?petId=:petId',(req,res)=>{
-    res.sendFile(__dirname+'/pages/pet_profile_page.html')
+app.get('/petprofile/:petId',async(req,res)=>{
+     const id = req.params.petId;
+    console.log('pet id: '+id);
+
+    const foundPet = await pet.findById(id)
+res.render('pet_profile_page',{
+    thePet:foundPet
+})
 })
 
+app.post('/petprofile/:petId', async(req,res)=>{
+    const {name, email, date, petId} = req.body
+    console.log(req.body);
+    console.log(petId);
+    try{
+    await adoptionForms.create({
+        'name':name,
+        'email':email,
+        'time_of_visit':date,
+        'petId': petId
+    })
+        res.sendStatus(200)
+    }catch(e){
+        res.sendStatus(500)
+    }
+})
 
 app.listen(port,()=>{
     console.log('Server is running...');

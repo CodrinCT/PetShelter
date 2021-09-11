@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pet Profile</title>
+    <link rel="stylesheet" href="/style/pet_search_profile.css" />
+  </head>
+  <body>
+    <div id="profile_div">
+      <div id="profile_image">
+        <img src="<%-thePet.petPhoto%>" id="profile_photo" alt="" />
+      </div>
+      <div id="profile_info">
+        <p>Catehory: <%- thePet.petCategory %></p>
+        <p>Name: <%- thePet.petName %></p>
+        <% if (thePet.petAge == 1) {%>
+        <p>Age: <%thePet.petAge%> year old</p>
+        <%}else if (thePet.petAge < 1) {%>
+        <p>Age: under one year old</p>
+        <%}else{%>
+        <p>Age: <%- thePet.petAge%> years old</p>
+        <%} %>
+        <p>Weight: <%- thePet.petWeight %> Kg</p>
+        <p>Health: <%- thePet.petHealth %></p>
+        <p>Distinctive Features: <%- thePet.petDistinctiveFeatures %></p>
+        <button id="adopt_btn">ADOPT PET</button>
+      </div>
+      <form action="" method="POST" id="form">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" class="input" />
+        <label for="email">Eamil</label>
+        <input type="email" id="email" name="email" class="input" />
+        <label for="date">Date</label>
+        <input type="date" id="date" name="date" class="input" />
+        <button id="adopt" type="submit">ADOPT</button>
+      </form>
+    </div>
+    <script src="/front-end-script/pet_search_profile.js"></script>
+  </body>
+</html>
